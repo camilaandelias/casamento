@@ -4,7 +4,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* Caligrafia simples e delicada, incluída no projeto. */
-@font-face{font-family:"Boheme Floral";src:url("assets/fonts/boheme-floral.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Boheme Floral";src:url("boheme-floral.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
 .hero h1{font-family:"Boheme Floral","Segoe Script",cursive;font-size:clamp(64px,8vw,112px);font-weight:400;line-height:1.5;letter-spacing:0;padding-inline:24px}
 .gifts{text-align:center;background:var(--paper);border-top:1px solid var(--line)}
 .gifts p{max-width:530px;margin:24px auto}.gifts .ornament{display:block;margin-bottom:24px}
