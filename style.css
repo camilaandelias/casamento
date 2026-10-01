@@ -20,3 +20,31 @@
 .menu-toggle span { color: inherit; }
 #presentes-link { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
 #presentes-link .link-icon { display: block; flex: 0 0 auto; }
+
+/* Botão disponível enquanto o cabeçalho está acima da área visível. */
+.back-to-top {
+  position: fixed;
+  right: calc(18px + env(safe-area-inset-right, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: 0 4px 18px #393b3226;
+  cursor: pointer;
+  transition: background-color .2s, box-shadow .2s;
+}
+.back-to-top svg { display: block; pointer-events: none; }
+@media (hover: hover) {
+  .back-to-top:hover { background: var(--sage); box-shadow: 0 6px 22px #393b3233; }
+}

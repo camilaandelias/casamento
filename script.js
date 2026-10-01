@@ -59,3 +59,32 @@ if (Array.isArray(c.fotos) && c.fotos.length) {
 }
 dialog.querySelector("button").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", e => {if(e.target === dialog) dialog.close();});
+
+
+// Mostra o atalho assim que o cabeçalho sai inteiramente pelo topo da tela.
+(() => {
+  const header = document.querySelector('.header');
+  const button = document.getElementById('voltar-topo');
+  if (!header || !button) return;
+  function updateBackToTop() {
+    button.hidden = header.getBoundingClientRect().bottom > 0;
+  }
+  updateBackToTop();
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(updateBackToTop, {threshold: 0});
+    observer.observe(header);
+  } else {
+    window.addEventListener('scroll', updateBackToTop, {passive: true});
+    window.addEventListener('resize', updateBackToTop);
+  }
+  window.addEventListener('pageshow', updateBackToTop);
+  document.querySelectorAll('[data-scroll-top]').forEach(control => {
+    control.addEventListener('click', event => {
+      event.preventDefault();
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top: 0, behavior: reducedMotion ? 'auto' : 'smooth'});
+      const brand = header.querySelector('.brand');
+      if (brand) brand.focus({preventScroll: true});
+    });
+  });
+})();
