@@ -6,7 +6,7 @@
   const control = document.getElementById('controle-musica');
   if (!welcome || !enter || !audio || !control) return;
   const label = control.querySelector('span');
-  audio.volume = 0.10;
+  audio.volume = 1;
   let entered = false;
   function updateControl() {
     const text = audio.paused ? 'Ouvir música' : 'Pausar música';
