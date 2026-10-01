@@ -48,6 +48,7 @@
   updateControl();
   if (typeof welcome.showModal === 'function') {
     welcome.showModal();
+    document.getElementById('welcome-title').focus({preventScroll: true});
     document.documentElement.classList.add('welcome-open');
   } else {
     // Navegadores antigos continuam permitindo acessar o site e tocar manualmente.
