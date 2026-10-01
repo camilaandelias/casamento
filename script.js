@@ -47,19 +47,44 @@ toggle.addEventListener("click", () => {const open = menu.classList.toggle("open
 menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 document.addEventListener("keydown", e => {if(e.key === "Escape") closeMenu();});
 const dialog = el("lightbox");
-if (Array.isArray(c.fotos) && c.fotos.length) {
+const galleryPhotos = Array.isArray(c.fotos) ? c.fotos : [];
+const previousPhoto = el("foto-anterior");
+const nextPhoto = el("foto-proxima");
+const photoPosition = el("foto-posicao");
+let currentPhotoIndex = 0;
+function showGalleryPhoto(index) {
+  if (!galleryPhotos.length) return;
+  currentPhotoIndex = (index + galleryPhotos.length) % galleryPhotos.length;
+  const photo = galleryPhotos[currentPhotoIndex];
+  const large = dialog.querySelector("img");
+  large.alt = photo.alt || `Foto do casal ${currentPhotoIndex + 1}`;
+  large.src = photo.src;
+  if (photoPosition) photoPosition.textContent = `${currentPhotoIndex + 1} de ${galleryPhotos.length}`;
+  if (previousPhoto) previousPhoto.hidden = galleryPhotos.length < 2;
+  if (nextPhoto) nextPhoto.hidden = galleryPhotos.length < 2;
+}
+if (galleryPhotos.length) {
   el("fotos").replaceChildren();
-  c.fotos.forEach((photo, i) => {
+  galleryPhotos.forEach((photo, i) => {
     const button = document.createElement("button"), img = document.createElement("img");
-    button.className = "photo"; button.setAttribute("aria-label", `Ampliar foto: ${photo.alt || i+1}`);
+    button.className = "photo";
+    button.setAttribute("aria-label", `Ampliar foto: ${photo.alt || i+1}`);
     img.src = photo.src; img.alt = photo.alt || `Foto do casal ${i+1}`; img.loading = "lazy";
     button.append(img); el("fotos").append(button);
-    button.addEventListener("click", () => {const large = dialog.querySelector("img");large.src=photo.src;large.alt=img.alt;dialog.showModal();});
+    button.addEventListener("click", () => { showGalleryPhoto(i); dialog.showModal(); });
   });
 }
-dialog.querySelector("button").addEventListener("click", () => dialog.close());
-dialog.addEventListener("click", e => {if(e.target === dialog) dialog.close();});
-
+if (previousPhoto) previousPhoto.addEventListener("click", () => showGalleryPhoto(currentPhotoIndex - 1));
+if (nextPhoto) nextPhoto.addEventListener("click", () => showGalleryPhoto(currentPhotoIndex + 1));
+dialog.querySelector(".close").addEventListener("click", () => dialog.close());
+dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
+dialog.addEventListener("keydown", e => {
+  if (!dialog.open || galleryPhotos.length < 2) return;
+  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    e.preventDefault();
+    showGalleryPhoto(currentPhotoIndex + (e.key === "ArrowLeft" ? -1 : 1));
+  }
+});
 
 // Mostra o atalho assim que o cabeçalho sai inteiramente pelo topo da tela.
 (() => {

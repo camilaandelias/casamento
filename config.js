@@ -10,8 +10,8 @@ const casamento = {
   presentesUrl: "https://casamento-szkb.listaideal.com.br/pt", // Cole aqui o link completo https://... da lista de presentes
   presencaUrl: "", // Link de um formulário externo para receber confirmações
   fotos: [
-    { src: "foto-01.jpg", alt: "Descrição deste momento" },
     { src: "foto-13.jpg", alt: "Descrição deste momento" },
+    { src: "foto-01.jpg", alt: "Descrição deste momento" },
     { src: "foto-03.jpg", alt: "Descrição deste momento" },
     { src: "foto-29.jpg", alt: "Descrição deste momento" },
     { src: "foto-41.jpg", alt: "Descrição deste momento" },

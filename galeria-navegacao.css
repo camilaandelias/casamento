@@ -1,0 +1,27 @@
+#lightbox .photo-navigation {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; padding: 0;
+  border: 1px solid #d7d5c8; border-radius: 50%;
+  background: rgba(250,247,241,.95);
+  color: #393b32; -webkit-text-fill-color: #393b32;
+  appearance: none; -webkit-appearance: none;
+  box-shadow: 0 3px 15px #0003; cursor: pointer;
+}
+#lightbox .photo-previous { left: 10px; }
+#lightbox .photo-next { right: 10px; }
+#lightbox .photo-navigation svg { pointer-events: none; }
+#lightbox .photo-position {
+  position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%);
+  color: #faf7f1; font: 12px/1.5 Arial,sans-serif; letter-spacing: 2px;
+  white-space: nowrap;
+}
+#lightbox .close { color: #393b32; -webkit-text-fill-color: #393b32; width: 44px; height: 44px; top: -48px; cursor: pointer; }
+#lightbox img { max-height: calc(100svh - 120px); }
+@media (hover:hover) { #lightbox .photo-navigation:hover { background: #e8e9e0; } }
+@media (max-width:700px) {
+  #lightbox .photo-navigation { width: 44px; height: 44px; }
+  #lightbox .photo-previous { left: 6px; }
+  #lightbox .photo-next { right: 6px; }
+}

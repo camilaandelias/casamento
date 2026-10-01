@@ -6,9 +6,11 @@
   <meta name="description" content="Um novo capítulo da nossa história. Acompanhe os detalhes do nosso casamento.">
   <title>Camila e Elias | Nosso casamento</title>
   <link rel="stylesheet" href="style.css?v=20261001-boasvindas">
-  <script src="boas-vindas.js?v=2" defer></script>
+  <link rel="stylesheet" href="galeria-mosaico.css?v=1">
+  <link rel="stylesheet" href="galeria-navegacao.css?v=1">
+  <script src="boas-vindas.js?v=3-volume" defer></script>
   <script src="config.js?v=20261001b" defer></script>
-  <script src="script.js?v=20261001-topo" defer></script>
+  <script src="script.js?v=20261001-setas" defer></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -52,10 +54,20 @@
   <button class="back-to-top" id="voltar-topo" type="button" data-scroll-top aria-label="Voltar ao topo" title="Voltar ao topo" hidden>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
-  <dialog id="lightbox" aria-label="Foto ampliada"><button class="close" aria-label="Fechar foto">×</button><img alt=""></dialog>
+  <dialog id="lightbox" aria-label="Fotos do casal" aria-describedby="foto-posicao">
+    <button class="close" type="button" aria-label="Fechar foto">×</button>
+    <img alt="">
+    <button id="foto-anterior" class="photo-navigation photo-previous" type="button" aria-label="Foto anterior" title="Foto anterior">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+    </button>
+    <button id="foto-proxima" class="photo-navigation photo-next" type="button" aria-label="Próxima foto" title="Próxima foto">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
+    <span id="foto-posicao" class="photo-position" role="status" aria-live="polite" aria-atomic="true"></span>
+  </dialog>
   <script src="rsvp.js?v=5" defer></script>
   <audio id="musica-casamento" loop preload="metadata">
-    <source src="ViOLiNiA_Zhanna_Stelmakh_-_Love_Story_(mp3.pm).mp3" type="audio/mpeg">
+    <source src="musica-suave.mp3" type="audio/mpeg">
   </audio>
   <button id="controle-musica" class="music-control" type="button" aria-label="Ouvir música" hidden>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="18" cy="16" rx="3" ry="2"/></svg>
