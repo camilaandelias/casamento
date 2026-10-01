@@ -1,0 +1,55 @@
+/* Crédito no rodapé, com fundo suave e desfocado. */
+footer .developer-credit {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid rgba(215, 213, 200, .55);
+  border-radius: 30px;
+  background: rgba(250, 247, 241, .5);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--muted, #6e6e60);
+  font: 11px/1.6 Arial, sans-serif;
+  letter-spacing: .3px;
+  text-align: center;
+}
+footer .developer-credit::before {
+  content: "";
+  position: absolute;
+  inset: 3px 8px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(185, 193, 166, .34), rgba(221, 205, 183, .32));
+  filter: blur(12px);
+  pointer-events: none;
+}
+footer .developer-credit .developer-link {
+  font-weight: 500;
+  color: var(--ink, #393b32);
+}
+@media (max-width:700px) {
+  footer { flex-wrap: wrap; justify-content: center; }
+  footer .developer-credit { max-width: 100%; }
+}
+
+footer .developer-link { text-decoration: none; }
+footer .developer-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* O crédito pertence ao próprio modal para ficar visível e clicável. */
+#boas-vindas[open] { flex-direction: column; }
+#boas-vindas .welcome-content { flex: 0 0 auto; }
+#boas-vindas .welcome-footer {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 16px 0 max(4px, env(safe-area-inset-bottom, 0px));
+}
+#boas-vindas .developer-link {
+  display: inline-block;
+  font-size: inherit;
+  letter-spacing: inherit;
+  padding: 5px 0;
+}
