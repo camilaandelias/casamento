@@ -16,6 +16,9 @@ const casamento = {
     { src: "foto-29.jpg", alt: "Descrição deste momento" },
     { src: "foto-41.jpg", alt: "Descrição deste momento" },
     { src: "foto-36.jpg", alt: "Descrição deste momento" },
+    { src: "foto-42.jpg", alt: "Descrição deste momento" },
+    { src: "foto-43.jpg", alt: "Descrição deste momento" },
+    { src: "foto-44.jpg", alt: "Descrição deste momento" },
     // Coloque as imagens na mesma pasta do index.html e adicione entradas assim:
     // { src: "foto-02.jpg", alt: "Descrição deste momento" },
   ]

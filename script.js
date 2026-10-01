@@ -113,3 +113,24 @@ dialog.addEventListener("keydown", e => {
     });
   });
 })();
+
+// Calcula cada quadro a partir da proporção original da fotografia.
+(() => {
+  const gallery = el("fotos");
+  let frame;
+  function layout() {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      const gap = parseFloat(getComputedStyle(gallery).columnGap) || 16;
+      gallery.querySelectorAll(".photo").forEach(button => {
+        const img = button.querySelector("img");
+        const ratio = img.naturalWidth ? img.naturalHeight / img.naturalWidth : 1.5;
+        button.style.gridRowEnd = `span ${Math.ceil(button.clientWidth * ratio + gap)}`;
+      });
+    });
+  }
+  gallery.querySelectorAll("img").forEach(img => img.addEventListener("load", layout));
+  if ("ResizeObserver" in window) new ResizeObserver(layout).observe(gallery);
+  else window.addEventListener("resize", layout);
+  layout();
+})();
