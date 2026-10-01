@@ -4,7 +4,7 @@
 const RSVP_URL = "https://script.google.com/macros/s/AKfycbycw5Cp8nDTv6lH6e8wCa3TrGFM8jlK3-rdFOWX8Pxr22UWXeNXmng5WFk-7oEFZNZGZw/exec";
 const section = document.getElementById('presenca');
 if (!section || section.querySelector('#rsvp-direto')) return;
-const texto=document.getElementById('presenca-texto');
+const texto=document.getElementById('presenca-texto'); 
 if(texto) texto.textContent='Preencha abaixo para nos contar se estará com a gente.';
 const antigo=document.getElementById('presenca-link');if(antigo) antigo.hidden=true;
 const host=document.createElement('div');host.id='rsvp-direto';
